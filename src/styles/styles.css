@@ -19,7 +19,7 @@ main {
   height: 100%;
 }
 
-section {
+.main-block {
  background: #d7dae7;
  height: 30rem;
  width: 40rem;

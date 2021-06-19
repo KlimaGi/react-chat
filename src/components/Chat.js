@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import AsideList from './AsideList';
+import Contacts from './Contacts';
 
 export default class Chat extends React.Component {
 state = {
@@ -13,15 +14,13 @@ let req = new XMLHttpRequest();
 req.onreadystatechange = () => {
   if (req.readyState === XMLHttpRequest.DONE) {
     //console.log(req.responseText);
-    let data = JSON.parse(req.responseText);
-    this.setState({contacts: data});
-    console.log(typeof data[0]);
-    console.log(data[0].users[0].name);
-    
+    var data = JSON.parse(req.responseText);
+    // console.log(this.state.contacts[0].users[1].password);
   }
+  this.setState({contacts: data});
 };
 
-req.open("GET", "https://api.jsonbin.io/b/60cc71a95ed58625fd138356", true);
+req.open("GET", "https://api.jsonbin.io/b/60cce7b18a4cd025b7a06b4a", true);
 req.setRequestHeader("secret-key", "$2b$10$j9/f4SpIHRRyy1IfvpRCXuLEicKJINln.mw6UzvUwXiVrZy2gy3JK");
 req.send();
         
@@ -32,8 +31,7 @@ req.send();
       <div>
         <Header />
         <main>
-          <section>
-          </section>
+            <Contacts contacts={this.state.contacts}/>
           
           <AsideList />
           
