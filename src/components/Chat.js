@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import AsideList from './AsideList';
-import Contacts from './Contacts';
+import ChatBlock from './ChatBlock';
 
 export default class Chat extends React.Component {
 state = {
@@ -13,7 +13,6 @@ let req = new XMLHttpRequest();
 
 req.onreadystatechange = () => {
   if (req.readyState === XMLHttpRequest.DONE) {
-    //console.log(req.responseText);
     var data = JSON.parse(req.responseText);
     // console.log(this.state.contacts[0].users[1].password);
   }
@@ -30,12 +29,11 @@ req.send();
     return (
       <div>
         <Header />
-        <main>
-            <Contacts contacts={this.state.contacts}/>
-          
-          <AsideList />
-          
+        <main className="m-2">
+          <ChatBlock />
+          <AsideList contacts={this.state.contacts}/>
         </main>
+        
       </div>
     )
   }
