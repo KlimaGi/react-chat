@@ -57,7 +57,7 @@ class ChatRoom extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="main-block">
        
         <Messages
           messages={this.state.messages}

@@ -1,39 +1,80 @@
-import React from 'react';
-import AsideList from './AsideList';
-import ChatBlock from './ChatBlock';
+import React from "react";
+import Messages from "./Messages";
+import Input from "./Input";
+import { UserContext } from "../context/UserContext";
 
 export default class Chat extends React.Component {
-state = {
-  contacts: []
-}
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: [],
+    };
 
-componentDidMount() {
-let req = new XMLHttpRequest();
-
-req.onreadystatechange = () => {
-  if (req.readyState === XMLHttpRequest.DONE) {
-    var data = JSON.parse(req.responseText);
-    // console.log(this.state.contacts[0].users[1].password);
+    this.fetchMessages = this.fetchMessages.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
   }
-  this.setState({contacts: data});
-};
 
-req.open("GET", "https://api.jsonbin.io/b/60cce7b18a4cd025b7a06b4a", true);
-req.setRequestHeader("secret-key", "$2b$10$j9/f4SpIHRRyy1IfvpRCXuLEicKJINln.mw6UzvUwXiVrZy2gy3JK");
-req.send();
-        
+  async fetchMessages() {
+    const messagesBin = await fetch(
+      "https://api.jsonbin.io/v3/b/60d2311d8ea8ec25bd134456",
+      {
+        headers: {
+          "X-Master-Key":
+            "$2b$10$j9/f4SpIHRRyy1IfvpRCXuLEicKJINln.mw6UzvUwXiVrZy2gy3JK",
+        },
       }
+    ).then((res) => res.json());
 
-  render () {
+    this.setState({
+      messages: messagesBin.record,
+    });
+  }
+
+  async sendMessage(user, message) {
+    await fetch("https://api.jsonbin.io/v3/b/60d2311d8ea8ec25bd134456", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Master-Key":
+          "$2b$10$j9/f4SpIHRRyy1IfvpRCXuLEicKJINln.mw6UzvUwXiVrZy2gy3JK",
+        "X-Bin-Versioning": "false",
+      },
+      body: JSON.stringify([
+        ...this.state.messages,
+        {
+          user,
+          timestamp: Date.now(),
+          message,
+        },
+      ]),
+    }).then((res) => res.json());
+
+    await this.fetchMessages();
+  }
+
+  async componentDidMount() {
+    await this.fetchMessages();
+  }
+
+  render() {
     return (
       <div>
-        
         <main className="m-2">
-          <ChatBlock />
-          <AsideList contacts={this.state.contacts}/>
+          <UserContext.Consumer>
+            {({ user }) => (
+              <>
+                <Messages messages={this.state.messages} currentUser={user} />
+
+                <Input
+                  onSendMessage={(inputText) =>
+                    this.sendMessage(user, inputText)
+                  }
+                />
+              </>
+            )}
+          </UserContext.Consumer>
         </main>
-        
       </div>
-    )
+    );
   }
 }
