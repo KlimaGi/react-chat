@@ -1,8 +1,11 @@
 import React from 'react';
+import ChatRoom from './ChatRoom';
+
 
 const ChatBlock = () => (
   <div className="main-block">
-      <h5 className="p-3">Chat block</h5>
+      <ChatRoom />
+      
   </div>
 );
 

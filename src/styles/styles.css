@@ -21,16 +21,25 @@ main {
 
 .main-block {
  background: #d7dae7;
- height: 30rem;
+ height: 70vh;
  width: 40rem;
 }
 .aside-list {
  background: #d7dae7;
- height: 30rem;
+ height: 70vh;
  width: 20rem;
  margin-left: 0.5rem;
 }
 
 .is-active {
   font-weight: bold;
+}
+
+.button {
+  background: #474e66;
+  color: #d7dae7;
+  width: 100%;
+}
+.button:hover{
+  background: #9da2bb;
 }

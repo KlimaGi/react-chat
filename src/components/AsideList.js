@@ -7,7 +7,7 @@ const AsideList = ({ contacts }) => {
             
               <h5>{typeof contacts}</h5>
               
-                
+                 
             
           </div>
         
