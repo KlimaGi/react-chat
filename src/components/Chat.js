@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from './Header';
-//import { BrowserRouter, Route } from 'react-router-dom';
 import AsideList from './AsideList';
 import ChatBlock from './ChatBlock';
 
@@ -29,7 +27,7 @@ req.send();
   render () {
     return (
       <div>
-        <Header />
+        
         <main className="m-2">
           <ChatBlock />
           <AsideList contacts={this.state.contacts}/>
