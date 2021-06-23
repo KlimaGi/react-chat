@@ -2,6 +2,7 @@ import React from "react";
 import Messages from "./Messages";
 import Input from "./Input";
 import { UserContext } from "../context/UserContext";
+import "../styles/styles.css";
 
 export default class Chat extends React.Component {
   constructor(props) {
@@ -59,7 +60,7 @@ export default class Chat extends React.Component {
   render() {
     return (
       <div>
-        <main className="m-2">
+        <main className="m-2 main-block">
           <UserContext.Consumer>
             {({ user }) => (
               <>

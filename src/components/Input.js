@@ -18,17 +18,17 @@ class Input extends Component {
 
   render() {
     return (
-      <div className="mx-2">
+      <div className="mx-2 container border-line d-flex ">
         <form onSubmit={(e) => this.onSubmit(e)}>
           <input
-            className="input-msg"
+            className="form-control"
             onChange={(e) => this.onChange(e)}
             value={this.state.text}
             type="text"
             placeholder="Enter your message and press Enter"
             autoFocus="true"
           />
-          <button className="button-msg">Send</button>
+          <button className="btn btn-color">Send</button>
         </form>
       </div>
     );

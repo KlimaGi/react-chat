@@ -1,17 +1,17 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from '../components/Header';
-import Profile from '../components/Profile';
-import Login from '../components/Login';
-import Chat from '../components/Chat';
-import NotFound from '../components/NotFound';
-import { UserContext } from '../context/UserContext';
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Header from "../components/Header";
+import Profile from "../components/Profile";
+import Login from "../components/Login";
+import Chat from "../components/Chat";
+import NotFound from "../components/NotFound";
+import { UserContext } from "../context/UserContext";
 
 class AppRouter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
     };
 
     this.login = this.login.bind(this);
@@ -19,7 +19,6 @@ class AppRouter extends React.Component {
   }
 
   login(userEmail) {
-    console.log("dasd");
     console.log(userEmail);
     this.setState({ user: userEmail });
   }
@@ -32,8 +31,8 @@ class AppRouter extends React.Component {
     const userContextValue = {
       user: this.state.user,
       login: this.login,
-      logout: this.logout
-    }
+      logout: this.logout,
+    };
     return (
       <BrowserRouter>
         <UserContext.Provider value={userContextValue}>

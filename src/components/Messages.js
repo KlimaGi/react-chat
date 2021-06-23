@@ -11,14 +11,14 @@ class Messages extends Component {
     );
   }
   renderMessage(messageItem) {
-    const { user, message } = messageItem;
+    const { user, message, timestamp } = messageItem;
     const { currentUser } = this.props;
     const messageFromMe = user === currentUser;
     const className = messageFromMe
       ? "Messages-message currentUser"
       : "Messages-message";
     return (
-      <li className={className}>
+      <li className={className} key={timestamp}>
         <span className="avatar" />
         <div className="Message-content">
           <div className="username">{user}</div>
