@@ -12,15 +12,17 @@ class AppRouter extends React.Component {
     super(props);
     this.state = {
       user: null,
+      color: null,
     };
 
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
   }
 
-  login(userEmail) {
+  login(userEmail, userColor) {
     console.log(userEmail);
-    this.setState({ user: userEmail });
+    console.log(userColor);
+    this.setState({ user: userEmail, color: userColor });
   }
 
   logout() {
@@ -30,6 +32,7 @@ class AppRouter extends React.Component {
   render() {
     const userContextValue = {
       user: this.state.user,
+      color: this.state.color,
       login: this.login,
       logout: this.logout,
     };

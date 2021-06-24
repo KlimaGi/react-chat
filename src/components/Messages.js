@@ -12,15 +12,16 @@ class Messages extends Component {
   }
   renderMessage(messageItem) {
     const { user, message, timestamp } = messageItem;
-    const { currentUser } = this.props;
+    const { currentUser, avatarColor } = this.props;
     const messageFromMe = user === currentUser;
     const className = messageFromMe
-      ? "Messages-message currentUser"
-      : "Messages-message";
+      ? "messages-message currentUser"
+      : "messages-message";
+    const avatCol = messageFromMe ? avatarColor : "#0000ff";
     return (
       <li className={className} key={timestamp}>
-        <span className="avatar" />
-        <div className="Message-content">
+        <div className="avatar" style={{ backgroundColor: avatCol }}></div>
+        <div className="message-content">
           <div className="username">{user}</div>
           <div className="text">{message}</div>
         </div>

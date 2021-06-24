@@ -2,6 +2,10 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
+function randomColor() {
+  return "#" + Math.floor(Math.random() * 0xffffff).toString(16);
+}
+
 const Login = withRouter(({ history }) => (
   <div className="container">
     <UserContext.Consumer>
@@ -9,11 +13,23 @@ const Login = withRouter(({ history }) => (
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            login(e.target.elements.emailValue.value);
+            login(
+              e.target.elements.emailValue.value,
+              e.target.elements.colorValue.value
+            );
             history.push("/chat");
           }}
           className="m-4"
         >
+          <div>
+            <label className="form-label">Color text</label>
+            <input
+              type="hidden"
+              className="form-control"
+              name="colorValue"
+              value={randomColor()}
+            />
+          </div>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
               Email

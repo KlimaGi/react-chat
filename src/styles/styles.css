@@ -4,29 +4,101 @@ body {
   font-family: "Roboto Slab", sans-serif;
   color: #474e66;
 }
-
+* {
+  font-family: "Roboto Slab", sans-serif;
+  color: #474e66;
+}
+/* ********** header style ********* */
 .header {
   background: #9da2bb;
 }
-
+.link-style {
+  text-decoration: none;
+  color: #474e66;
+  margin: 2rem;
+}
+.link-style:hover {
+  color: #7f48a3;
+}
+.is-active {
+  font-weight: bold;
+  color: #7f48a3;
+}
 main {
   display: flex;
   flex-direction: row;
   /* border: 1px solid #474e66; */
   height: 100%;
 }
-
+/* ********** messages block ********* */
 .main-block {
   background: #d7dae7;
-  height: 70vh;
-  width: 40rem;
+  height: 73vh;
+  width: 90%;
+  /* border: 1px solid #474e66; */
+  overflow-y: scroll;
+}
+.main-block::-webkit-scrollbar {
+  width: 1em;
+}
+
+.main-block::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(157, 162, 187, 0.3);
+}
+.main-block::-webkit-scrollbar-thumb {
+  background-color: #afb4c9;
+  border-radius: 10px;
+}
+
+#scroller * {
+  overflow-anchor: none;
+}
+
+#anchor {
+  overflow-anchor: auto;
+  height: 1px;
+}
+
+/* ********** one message ********* */
+li {
+  list-style: none;
+}
+.avatar {
   border: 1px solid #474e66;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  margin-top: 1.8rem;
+}
+.username {
+  font-weight: 600;
+  color: #647097;
+}
+.text {
+  padding-top: 1rem;
+}
+.messages-message {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.message-content {
+  background: #c1c5da;
+  border-radius: 10px;
+  margin: 1rem;
+  padding: 1rem;
+  width: 75%;
 }
 
-.is-active {
-  font-weight: bold;
+.currentUser > .message-content {
+  background-color: #eaebf0;
 }
 
+/* ********** message input ********* */
+.msg-input {
+  background: #9da2bb;
+}
+/* ********** buttons ********* */
 .button {
   background: #474e66;
   color: #d7dae7;
@@ -34,7 +106,9 @@ main {
 }
 .button,
 .btn-color:hover {
-  background: #9da2bb !important;
+  background: #5c6583 !important;
+  color: #d7dae7 !important;
+  cursor: pointer;
 }
 .btn-color {
   background: #474e66 !important;

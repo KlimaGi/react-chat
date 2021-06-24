@@ -59,23 +59,30 @@ export default class Chat extends React.Component {
 
   render() {
     return (
-      <div>
-        <main className="m-2 main-block">
-          <UserContext.Consumer>
-            {({ user }) => (
-              <>
-                <Messages messages={this.state.messages} currentUser={user} />
+      <main>
+        <UserContext.Consumer>
+          {({ user, color }) => (
+            <>
+              <div className="main-block mx-auto" id="scroller">
+                <Messages
+                  messages={this.state.messages}
+                  currentUser={user}
+                  avatarColor={color}
+                />
+                <div id="anchor"></div>
+              </div>
 
+              <div className="msg-input fixed-bottom pb-4 pt-4">
                 <Input
                   onSendMessage={(inputText) =>
                     this.sendMessage(user, inputText)
                   }
                 />
-              </>
-            )}
-          </UserContext.Consumer>
-        </main>
-      </div>
+              </div>
+            </>
+          )}
+        </UserContext.Consumer>
+      </main>
     );
   }
 }
