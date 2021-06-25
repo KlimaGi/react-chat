@@ -1,7 +1,7 @@
 import React from "react";
 import Messages from "./Messages";
 import Input from "./Input";
-import { UserContext } from "../context/UserContext";
+
 import "../styles/styles.css";
 
 export default class Chat extends React.Component {
@@ -51,6 +51,8 @@ export default class Chat extends React.Component {
     }).then((res) => res.json());
 
     await this.fetchMessages();
+    console.log(this.props.roomId);
+    console.log(this.props.roomName);
   }
 
   async componentDidMount() {
@@ -59,30 +61,24 @@ export default class Chat extends React.Component {
 
   render() {
     return (
-      <main>
-        <UserContext.Consumer>
-          {({ user, color }) => (
-            <>
-              <div className="main-block mx-auto mt-0" id="scroller">
-                <Messages
-                  messages={this.state.messages}
-                  currentUser={user}
-                  avatarColor={color}
-                />
-                <div id="anchor"></div>
-              </div>
+      <>
+        <div className="main-block mx-auto mt-0 mb-5" id="scroller">
+          <Messages
+            messages={this.state.messages}
+            currentUser={this.props}
+            avatarColor={this.props}
+          />
+          <div id="anchor"></div>
+        </div>
 
-              <div className="msg-input-box fixed-bottom pb-4 pt-4">
-                <Input
-                  onSendMessage={(inputText) =>
-                    this.sendMessage(user, inputText)
-                  }
-                />
-              </div>
-            </>
-          )}
-        </UserContext.Consumer>
-      </main>
+        <div className="msg-input-box fixed-bottom pb-4 pt-4">
+          <Input
+            onSendMessage={(inputText) =>
+              this.sendMessage(this.props.currentUser, inputText)
+            }
+          />
+        </div>
+      </>
     );
   }
 }

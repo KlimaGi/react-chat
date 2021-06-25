@@ -7,7 +7,8 @@ function randomColor() {
 }
 
 const Login = withRouter(({ history }) => (
-  <div className="container">
+  <div className="profile-box mx-auto p-5">
+    <h3 className="p-3 text-center">cloudy sky chat</h3>
     <UserContext.Consumer>
       {({ login }) => (
         <form
@@ -17,12 +18,11 @@ const Login = withRouter(({ history }) => (
               e.target.elements.emailValue.value,
               e.target.elements.colorValue.value
             );
-            history.push("/chat");
+            history.push("/chatroom");
           }}
           className="m-4"
         >
           <div>
-            <label className="form-label">Color text</label>
             <input
               type="hidden"
               className="form-control"

@@ -2,24 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Profile = () => (
-  <div>
-    This is from Profile page
-    <p>
-      <Link to="chat" className="link-style">
+  <div className="profile-box mx-auto p-5">
+    <div className="profile-circe mx-auto p-5"></div>
+
+    <label className="form-label my-1">Edit your Email</label>
+    <input type="email" className="form-control msg-input mb-3" />
+    <label className="form-label my-1">Change password</label>
+    <input type="email" className="form-control msg-input" />
+    <button className="btn btn-room-create my-5 form-control col-6 mx-auto">
+      <Link to="chat" className="link-style link-to">
         Chat
       </Link>
-
-      <label for="exampleColorInput" class="form-label">
-        Color picker
-      </label>
-      <input
-        type="color"
-        class="form-control form-control-color"
-        id="exampleColorInput"
-        value="#563d7c"
-        title="Choose your color"
-      ></input>
-    </p>
+    </button>
   </div>
 );
 

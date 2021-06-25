@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Header from "../components/Header";
 import Profile from "../components/Profile";
 import Login from "../components/Login";
-import Chat from "../components/Chat";
+import ChatRoom from "../components/ChatRoom";
 import NotFound from "../components/NotFound";
 import { UserContext } from "../context/UserContext";
 
@@ -39,11 +38,10 @@ class AppRouter extends React.Component {
     return (
       <BrowserRouter>
         <UserContext.Provider value={userContextValue}>
-          <Header />
           <Switch>
             <Route path="/" component={Login} exact={true} />
             <Route path="/profile" component={Profile} />
-            <Route path="/chat" component={Chat} />
+            <Route path="/chatroom" component={ChatRoom} />
             <Route component={NotFound} />
           </Switch>
         </UserContext.Provider>

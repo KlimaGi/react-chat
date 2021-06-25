@@ -25,18 +25,15 @@ body {
   color: #7f48a3;
 }
 .rooms-box {
-  border: 1px solid #474e66;
-}
-main {
+  padding-top: 1rem;
   display: flex;
-  flex-direction: row;
-  /* border: 1px solid #474e66; */
-  height: 100%;
+  margin: 0 auto;
 }
+
 /* ********** messages block ********* */
 .main-block {
   background: #d7dae7;
-  height: 73vh;
+  height: 70vh;
   width: 90%;
   /* border: 1px solid #474e66; */
   overflow-y: scroll;
@@ -147,4 +144,32 @@ li {
 }
 .border-line {
   border: 1px solid #474e66;
+}
+/* ********** 404 ********* */
+.error {
+  height: 20rem;
+  width: 30rem;
+  margin: 0 auto;
+  background: #c1c5da;
+  border-radius: 5px;
+}
+.link-to {
+  text-decoration: none;
+  color: #d7dae7;
+  margin: 2rem;
+}
+/* ********** profile ********* */
+.profile-box {
+  height: 28rem;
+  width: 30rem;
+  margin: 2rem;
+  background: #c1c5da;
+  border-radius: 5px;
+}
+
+.profile-circe {
+  width: 4rem;
+  height: 4rem;
+  background: #7f48a3;
+  border-radius: 50%;
 }

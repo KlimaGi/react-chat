@@ -4,11 +4,7 @@ import React from "react";
 class Messages extends Component {
   render() {
     const { messages } = this.props;
-    return (
-      <ul className="Messages-list">
-        {messages.map((m) => this.renderMessage(m))}
-      </ul>
-    );
+    return <ul>{messages.map((m) => this.renderMessage(m))}</ul>;
   }
   renderMessage(messageItem) {
     const { user, message, timestamp } = messageItem;
