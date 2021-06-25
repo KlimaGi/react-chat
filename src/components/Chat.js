@@ -17,11 +17,11 @@ export default class Chat extends React.Component {
 
   async fetchMessages() {
     const messagesBin = await fetch(
-      "https://api.jsonbin.io/v3/b/60d2311d8ea8ec25bd134456",
+      "https://api.jsonbin.io/v3/b/60d52fd68ea8ec25bd15115f",
       {
         headers: {
           "X-Master-Key":
-            "$2b$10$j9/f4SpIHRRyy1IfvpRCXuLEicKJINln.mw6UzvUwXiVrZy2gy3JK",
+            "$2b$10$moZ7ds3juFEmK5ceCEkED.KFx1VKwjFDFrVKc2Ezp92IlA8hvCoxO",
         },
       }
     ).then((res) => res.json());
@@ -32,12 +32,12 @@ export default class Chat extends React.Component {
   }
 
   async sendMessage(user, message) {
-    await fetch("https://api.jsonbin.io/v3/b/60d2311d8ea8ec25bd134456", {
+    await fetch("https://api.jsonbin.io/v3/b/60d52fd68ea8ec25bd15115f", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "X-Master-Key":
-          "$2b$10$j9/f4SpIHRRyy1IfvpRCXuLEicKJINln.mw6UzvUwXiVrZy2gy3JK",
+          "$2b$10$moZ7ds3juFEmK5ceCEkED.KFx1VKwjFDFrVKc2Ezp92IlA8hvCoxO",
         "X-Bin-Versioning": "false",
       },
       body: JSON.stringify([
@@ -63,7 +63,7 @@ export default class Chat extends React.Component {
         <UserContext.Consumer>
           {({ user, color }) => (
             <>
-              <div className="main-block mx-auto" id="scroller">
+              <div className="main-block mx-auto mt-0" id="scroller">
                 <Messages
                   messages={this.state.messages}
                   currentUser={user}
@@ -72,7 +72,7 @@ export default class Chat extends React.Component {
                 <div id="anchor"></div>
               </div>
 
-              <div className="msg-input fixed-bottom pb-4 pt-4">
+              <div className="msg-input-box fixed-bottom pb-4 pt-4">
                 <Input
                   onSendMessage={(inputText) =>
                     this.sendMessage(user, inputText)

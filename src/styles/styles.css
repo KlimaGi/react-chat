@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap");
 body {
-  background-color: #eaebf0;
+  background: #e4e6ee !important;
   font-family: "Roboto Slab", sans-serif;
   color: #474e66;
 }
@@ -23,6 +23,9 @@ body {
 .is-active {
   font-weight: bold;
   color: #7f48a3;
+}
+.rooms-box {
+  border: 1px solid #474e66;
 }
 main {
   display: flex;
@@ -91,12 +94,15 @@ li {
 }
 
 .currentUser > .message-content {
-  background-color: #eaebf0;
+  background-color: #eaebf3;
 }
 
 /* ********** message input ********* */
-.msg-input {
+.msg-input-box {
   background: #9da2bb;
+}
+.msg-input {
+  background: #e4e6ee !important;
 }
 /* ********** buttons ********* */
 .button {
@@ -110,8 +116,33 @@ li {
   color: #d7dae7 !important;
   cursor: pointer;
 }
+
 .btn-color {
   background: #474e66 !important;
+  color: #d7dae7 !important;
+}
+.btn-room {
+  background: #5c6583 !important;
+  color: #d7dae7 !important;
+  cursor: pointer;
+}
+.btn-room-create {
+  background: #7f48a3 !important;
+  color: #d7dae7 !important;
+  cursor: pointer;
+}
+.btn-room-create:hover {
+  background: #5f367a !important;
+}
+.btn-room-create:active {
+  background: #492d5c !important;
+}
+.btn-room:hover {
+  background: #4c5368 !important;
+  color: #d7dae7 !important;
+}
+.btn-room:active {
+  background: #4c5368 !important;
   color: #d7dae7 !important;
 }
 .border-line {

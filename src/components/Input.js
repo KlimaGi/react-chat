@@ -22,7 +22,7 @@ class Input extends Component {
         <form onSubmit={(e) => this.onSubmit(e)} className="row">
           <div className="col-10">
             <input
-              className="form-control"
+              className="form-control msg-input"
               onChange={(e) => this.onChange(e)}
               value={this.state.text}
               type="text"
