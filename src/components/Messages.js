@@ -13,7 +13,7 @@ class Messages extends Component {
     const className = messageFromMe
       ? "messages-message currentUser"
       : "messages-message";
-    const avatCol = messageFromMe ? avatarColor : "#0000ff";
+    const avatCol = messageFromMe ? avatarColor : "#9da2bb";
     return (
       <li className={className} key={timestamp}>
         <div className="avatar" style={{ backgroundColor: avatCol }}></div>

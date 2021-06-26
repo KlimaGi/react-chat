@@ -6,6 +6,8 @@ import ChatRoom from "../components/ChatRoom";
 import NotFound from "../components/NotFound";
 import { UserContext } from "../context/UserContext";
 
+import "../styles/styles.css";
+
 class AppRouter extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ class AppRouter extends React.Component {
   }
 
   logout() {
-    this.setState({ user: null });
+    this.setState({ user: null, color: null });
   }
 
   render() {

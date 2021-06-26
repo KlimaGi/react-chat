@@ -7,8 +7,10 @@ function randomColor() {
 }
 
 const Login = withRouter(({ history }) => (
-  <div className="profile-box mx-auto p-5">
-    <h3 className="p-3 text-center">cloudy sky chat</h3>
+  <div className="profile-box mx-auto p-5 mt-5">
+    <h3 className="p-3 text-center">
+      <strong>cloudy sky chat</strong>
+    </h3>
     <UserContext.Consumer>
       {({ login }) => (
         <form

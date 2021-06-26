@@ -8,14 +8,14 @@ class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
+      id: null,
       room: "",
     };
   }
 
-  parentFunction = (id) => {
-    this.setState({ id: id });
-  };
+  // componentDidUpdate() {
+  //   console.log(this.state.id);
+  // }
 
   render() {
     return (
@@ -23,13 +23,18 @@ class ChatRoom extends React.Component {
         {({ user, color }) => (
           <div>
             <Header />
-            <Rooms functionCallFromChatRoom={this.parentFunction} />
-            <Chat
-              currentUser={user}
-              avatarColor={color}
-              roomId={this.state.id}
-              roomName={this.state.room}
+            <Rooms
+              onChooseRoom={(id, room) => this.setState({ id: id, room: room })}
             />
+
+            {(this.state.id === null ? false : true) && (
+              <Chat
+                currentUser={user}
+                avatarColor={color}
+                roomId={this.state.id}
+                roomName={this.state.room}
+              />
+            )}
           </div>
         )}
       </UserContext.Consumer>

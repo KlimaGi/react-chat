@@ -26,7 +26,7 @@ class Input extends Component {
               onChange={(e) => this.onChange(e)}
               value={this.state.text}
               type="text"
-              placeholder="Enter your message and press Enter"
+              placeholder="Write your message and press Enter"
               autoFocus="true"
             />
           </div>

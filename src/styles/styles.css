@@ -64,7 +64,7 @@ li {
   list-style: none;
 }
 .avatar {
-  border: 1px solid #474e66;
+  border: 1px solid #9da2bb;
   border-radius: 50%;
   height: 2rem;
   width: 2rem;
@@ -128,6 +128,7 @@ li {
   color: #d7dae7 !important;
   cursor: pointer;
 }
+
 .btn-room-create:hover {
   background: #5f367a !important;
 }
@@ -155,7 +156,7 @@ li {
 }
 .link-to {
   text-decoration: none;
-  color: #d7dae7;
+  color: #d7dae7 !important;
   margin: 2rem;
 }
 /* ********** profile ********* */

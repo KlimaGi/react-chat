@@ -9,15 +9,28 @@ export default class Chat extends React.Component {
     super(props);
     this.state = {
       messages: [],
+      roomId: null,
     };
 
     this.fetchMessages = this.fetchMessages.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
   }
 
+  // this.setState({ roomId: this.props });
+
+  static getDerivedStateFromProps(props, state) {
+    //console.log("getDerivedStateFromProps", state.roomId);
+    return {
+      roomId: props.roomId,
+    };
+  }
+
+  // getRoomId() {
+  //   this.setState({ roomId: this.props.roomId });
+  // }
   async fetchMessages() {
     const messagesBin = await fetch(
-      "https://api.jsonbin.io/v3/b/60d52fd68ea8ec25bd15115f",
+      "https://api.jsonbin.io/v3/b/" + this.state.roomId,
       {
         headers: {
           "X-Master-Key":
@@ -32,7 +45,7 @@ export default class Chat extends React.Component {
   }
 
   async sendMessage(user, message) {
-    await fetch("https://api.jsonbin.io/v3/b/60d52fd68ea8ec25bd15115f", {
+    await fetch("https://api.jsonbin.io/v3/b/" + this.state.roomId, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -56,10 +69,12 @@ export default class Chat extends React.Component {
   }
 
   async componentDidMount() {
+    console.log("fromDid ", this.state.roomId);
     await this.fetchMessages();
   }
 
   render() {
+    this.fetchMessages();
     return (
       <>
         <div className="main-block mx-auto mt-0 mb-5" id="scroller">

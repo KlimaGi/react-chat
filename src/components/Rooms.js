@@ -7,19 +7,19 @@ class Rooms extends React.Component {
       rooms: [],
       metadata: [],
       id: "",
-      room: "",
+      roomN: "",
     };
     this.fetchRooms = this.fetchRooms.bind(this);
     this.createRoom = this.createRoom.bind(this);
     this.updateRooms = this.updateRooms.bind(this);
     this.handleAddRoom = this.handleAddRoom.bind(this);
     this.handleChooseRoom = this.handleChooseRoom.bind(this);
-    this.twoFunctions = this.twoFunctions.bind(this);
+    this.sendRoom = this.sendRoom.bind(this);
   }
 
   async fetchRooms() {
     const roomsBin = await fetch(
-      "https://api.jsonbin.io/v3/b/60d52fbe8ea8ec25bd151152",
+      "https://api.jsonbin.io/v3/b/60d73f898a4cd025b7a62f4f",
       {
         headers: {
           "X-Master-Key":
@@ -44,7 +44,7 @@ class Rooms extends React.Component {
       },
       body: JSON.stringify([
         {
-          user: this.props.user,
+          user: "cloudy sky chat",
           timestamp: Date.now(),
           message: "Welcome to new chat",
         },
@@ -57,7 +57,7 @@ class Rooms extends React.Component {
   }
 
   async updateRooms() {
-    await fetch("https://api.jsonbin.io/v3/b/60d52fbe8ea8ec25bd151152", {
+    await fetch("https://api.jsonbin.io/v3/b/60d73f898a4cd025b7a62f4f", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -91,18 +91,13 @@ class Rooms extends React.Component {
   }
   getNameId(r, butNam) {
     if (r.name === butNam) {
-      this.setState({ id: r.id, room: r.name });
+      this.setState({ id: r.id, roomN: r.name });
     }
   }
-  dataTransferToChatRoom = () => {
-    var ID = this.state.id;
-    this.props.functionCallFromChatRoom(ID);
-  };
 
-  twoFunctions = () => {
-    this.handleChooseRoom();
-    this.dataTransferToChatRoom.bind(this);
-  };
+  sendRoom() {
+    this.props.onChooseRoom(this.state.id, this.state.room);
+  }
 
   render() {
     return (
@@ -128,7 +123,8 @@ class Rooms extends React.Component {
       <li className="list-inline-item m-1" key={id}>
         <button
           className="btn btn-room px-3"
-          onClick={this.twoFunctions}
+          onMouseOver={this.handleChooseRoom}
+          onClick={this.sendRoom}
           id={name}
         >
           {name}

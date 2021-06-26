@@ -20,6 +20,7 @@ const Header = () => (
                 activeClassName="is-active"
                 exact={true}
                 className="link-style"
+                onClick={logout}
               >
                 Sign out
               </NavLink>
