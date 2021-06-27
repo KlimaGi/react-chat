@@ -14,9 +14,6 @@ class AppRouter extends React.Component {
     this.state = {
       user: null,
       color: null,
-      roomId: null,
-      roomName: null,
-      rooms: [],
     };
 
     this.login = this.login.bind(this);

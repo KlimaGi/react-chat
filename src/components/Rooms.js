@@ -20,11 +20,11 @@ class Rooms extends React.Component {
 
   async fetchRooms() {
     const roomsBin = await fetch(
-      "https://api.jsonbin.io/v3/b/60d73f898a4cd025b7a62f4f",
+      "https://api.jsonbin.io/v3/b/60d8ba8d55b7245a20cfdb83",
       {
         headers: {
           "X-Master-Key":
-            "$2b$10$moZ7ds3juFEmK5ceCEkED.KFx1VKwjFDFrVKc2Ezp92IlA8hvCoxO",
+            "$2b$10$Dvfzw5hIL0gWJIBoO2mdPOxp1RaRB8PNeXxzBxiWrs/2fVrbVeNY6",
         },
       }
     ).then((res) => res.json());
@@ -40,7 +40,7 @@ class Rooms extends React.Component {
       headers: {
         "Content-Type": "application/json",
         "X-Master-Key":
-          "$2b$10$moZ7ds3juFEmK5ceCEkED.KFx1VKwjFDFrVKc2Ezp92IlA8hvCoxO",
+          "$2b$10$Dvfzw5hIL0gWJIBoO2mdPOxp1RaRB8PNeXxzBxiWrs/2fVrbVeNY6",
         "X-Bin-Versioning": "false",
       },
       body: JSON.stringify([
@@ -58,12 +58,12 @@ class Rooms extends React.Component {
   }
 
   async updateRooms() {
-    await fetch("https://api.jsonbin.io/v3/b/60d73f898a4cd025b7a62f4f", {
+    await fetch("https://api.jsonbin.io/v3/b/60d8ba8d55b7245a20cfdb83", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "X-Master-Key":
-          "$2b$10$moZ7ds3juFEmK5ceCEkED.KFx1VKwjFDFrVKc2Ezp92IlA8hvCoxO",
+          "$2b$10$Dvfzw5hIL0gWJIBoO2mdPOxp1RaRB8PNeXxzBxiWrs/2fVrbVeNY6",
         "X-Bin-Versioning": "false",
       },
       body: JSON.stringify([

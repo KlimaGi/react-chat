@@ -15,25 +15,24 @@ export default class Chat extends React.Component {
     this.sendMessage = this.sendMessage.bind(this);
   }
 
-  // this.setState({ roomId: this.props });
-
   static getDerivedStateFromProps(props, state) {
-    //console.log("getDerivedStateFromProps", state.roomId);
     return {
       roomId: props.roomId,
     };
   }
+  componentDidUpdate(prevProps) {
+    if (this.props.roomId !== prevProps.roomId) {
+      this.fetchMessages();
+    }
+  }
 
-  // getRoomId() {
-  //   this.setState({ roomId: this.props.roomId });
-  // }
   async fetchMessages() {
     const messagesBin = await fetch(
       "https://api.jsonbin.io/v3/b/" + this.state.roomId,
       {
         headers: {
           "X-Master-Key":
-            "$2b$10$moZ7ds3juFEmK5ceCEkED.KFx1VKwjFDFrVKc2Ezp92IlA8hvCoxO",
+            "$2b$10$Dvfzw5hIL0gWJIBoO2mdPOxp1RaRB8PNeXxzBxiWrs/2fVrbVeNY6",
         },
       }
     ).then((res) => res.json());
@@ -49,7 +48,7 @@ export default class Chat extends React.Component {
       headers: {
         "Content-Type": "application/json",
         "X-Master-Key":
-          "$2b$10$moZ7ds3juFEmK5ceCEkED.KFx1VKwjFDFrVKc2Ezp92IlA8hvCoxO",
+          "$2b$10$Dvfzw5hIL0gWJIBoO2mdPOxp1RaRB8PNeXxzBxiWrs/2fVrbVeNY6",
         "X-Bin-Versioning": "false",
       },
       body: JSON.stringify([
@@ -63,8 +62,6 @@ export default class Chat extends React.Component {
     }).then((res) => res.json());
 
     await this.fetchMessages();
-    console.log(this.props.roomId);
-    console.log(this.props.roomName);
   }
 
   async componentDidMount() {
@@ -73,7 +70,6 @@ export default class Chat extends React.Component {
   }
 
   render() {
-    this.fetchMessages();
     return (
       <>
         <ErrorBoundary>
