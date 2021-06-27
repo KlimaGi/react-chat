@@ -1,8 +1,7 @@
 import React from "react";
 import Messages from "./Messages";
 import Input from "./Input";
-
-import "../styles/styles.css";
+import ErrorBoundary from "./ErrorBoundary";
 
 export default class Chat extends React.Component {
   constructor(props) {
@@ -77,22 +76,25 @@ export default class Chat extends React.Component {
     this.fetchMessages();
     return (
       <>
-        <div className="main-block mx-auto mt-0 mb-5" id="scroller">
-          <Messages
-            messages={this.state.messages}
-            currentUser={this.props}
-            avatarColor={this.props}
-          />
-          <div id="anchor"></div>
-        </div>
-
-        <div className="msg-input-box fixed-bottom pb-4 pt-4">
-          <Input
-            onSendMessage={(inputText) =>
-              this.sendMessage(this.props.currentUser, inputText)
-            }
-          />
-        </div>
+        <ErrorBoundary>
+          <div className="main-block mx-auto mt-0 mb-5" id="scroller">
+            <Messages
+              messages={this.state.messages}
+              currentUser={this.props}
+              avatarColor={this.props}
+            />
+            <div id="anchor"></div>
+          </div>
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <div className="msg-input-box fixed-bottom pb-4 pt-4">
+            <Input
+              onSendMessage={(inputText) =>
+                this.sendMessage(this.props.currentUser, inputText)
+              }
+            />
+          </div>
+        </ErrorBoundary>
       </>
     );
   }

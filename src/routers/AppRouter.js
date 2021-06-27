@@ -5,7 +5,7 @@ import Login from "../components/Login";
 import ChatRoom from "../components/ChatRoom";
 import NotFound from "../components/NotFound";
 import { UserContext } from "../context/UserContext";
-
+import ErrorBoundary from "../components/ErrorBoundary";
 import "../styles/styles.css";
 
 class AppRouter extends React.Component {
@@ -14,6 +14,9 @@ class AppRouter extends React.Component {
     this.state = {
       user: null,
       color: null,
+      roomId: null,
+      roomName: null,
+      rooms: [],
     };
 
     this.login = this.login.bind(this);
@@ -39,14 +42,16 @@ class AppRouter extends React.Component {
     };
     return (
       <BrowserRouter>
-        <UserContext.Provider value={userContextValue}>
-          <Switch>
-            <Route path="/" component={Login} exact={true} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/chatroom" component={ChatRoom} />
-            <Route component={NotFound} />
-          </Switch>
-        </UserContext.Provider>
+        <ErrorBoundary>
+          <UserContext.Provider value={userContextValue}>
+            <Switch>
+              <Route path="/" component={Login} exact={true} />
+              <Route path="/profile" component={Profile} />
+              <Route path="/chatroom" component={ChatRoom} />
+              <Route component={NotFound} />
+            </Switch>
+          </UserContext.Provider>
+        </ErrorBoundary>
       </BrowserRouter>
     );
   }

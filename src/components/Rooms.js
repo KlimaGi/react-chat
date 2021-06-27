@@ -1,4 +1,5 @@
 import React from "react";
+import ErrorBoundary from "./ErrorBoundary";
 
 class Rooms extends React.Component {
   constructor(props) {
@@ -101,19 +102,21 @@ class Rooms extends React.Component {
 
   render() {
     return (
-      <div className="rooms-box px-5 header">
-        <ul className="list-inline m-1">
-          {this.state.rooms.map((room) => this.renderRoom(room))}
-          <li className="list-inline-item m-1">
-            <button
-              onClick={this.handleAddRoom}
-              className="btn btn-room-create px-3"
-            >
-              create
-            </button>
-          </li>
-        </ul>
-      </div>
+      <ErrorBoundary>
+        <div className="rooms-box px-5 header">
+          <ul className="list-inline">
+            {this.state.rooms.map((room) => this.renderRoom(room))}
+            <li className="list-inline-item m-1">
+              <button
+                onClick={this.handleAddRoom}
+                className="btn btn-room-create px-3"
+              >
+                create
+              </button>
+            </li>
+          </ul>
+        </div>
+      </ErrorBoundary>
     );
   }
 

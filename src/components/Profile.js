@@ -17,7 +17,7 @@ const Profile = () => (
       <div className="d-flex justify-content-between">
         <button className="btn btn-room-create px-5 my-5 ">Submit</button>
         <button className="btn btn-room-create px-2 my-5">
-          <Link to="chat" className="link-to">
+          <Link to="chatroom" className="link-to">
             Back to Chat
           </Link>
         </button>

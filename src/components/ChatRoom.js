@@ -3,6 +3,7 @@ import Header from "./Header";
 import Rooms from "./Rooms";
 import Chat from "./Chat";
 import { UserContext } from "../context/UserContext";
+import ErrorBoundary from "./ErrorBoundary";
 
 class ChatRoom extends React.Component {
   constructor(props) {
@@ -23,17 +24,24 @@ class ChatRoom extends React.Component {
         {({ user, color }) => (
           <div>
             <Header />
-            <Rooms
-              onChooseRoom={(id, room) => this.setState({ id: id, room: room })}
-            />
+
+            <ErrorBoundary>
+              <Rooms
+                onChooseRoom={(id, room) =>
+                  this.setState({ id: id, room: room })
+                }
+              />
+            </ErrorBoundary>
 
             {(this.state.id === null ? false : true) && (
-              <Chat
-                currentUser={user}
-                avatarColor={color}
-                roomId={this.state.id}
-                roomName={this.state.room}
-              />
+              <ErrorBoundary>
+                <Chat
+                  currentUser={user}
+                  avatarColor={color}
+                  roomId={this.state.id}
+                  roomName={this.state.room}
+                />
+              </ErrorBoundary>
             )}
           </div>
         )}

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
 const Header = () => (
-  <header className="header pt-3 px-3 row">
+  <header className="header pt-3 px-3 row g-0">
     <div className="col mx-5">
       <h3 className="mx-3">
         <strong>cloudy sky chat</strong>

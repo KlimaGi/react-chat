@@ -27,7 +27,7 @@ class Input extends Component {
               value={this.state.text}
               type="text"
               placeholder="Write your message and press Enter"
-              autoFocus="true"
+              autoFocus={true}
             />
           </div>
           <div className="col-2">
