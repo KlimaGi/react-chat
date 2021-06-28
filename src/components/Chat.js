@@ -2,6 +2,7 @@ import React from "react";
 import Messages from "./Messages";
 import Input from "./Input";
 import ErrorBoundary from "./ErrorBoundary";
+import LoadingDots from "./LoadingDots";
 
 export default class Chat extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class Chat extends React.Component {
     this.state = {
       messages: [],
       roomId: null,
+      loading: false,
     };
 
     this.fetchMessages = this.fetchMessages.bind(this);
@@ -38,6 +40,7 @@ export default class Chat extends React.Component {
     ).then((res) => res.json());
 
     this.setState({
+      loading: true,
       messages: messagesBin.record,
     });
   }
@@ -60,37 +63,43 @@ export default class Chat extends React.Component {
         },
       ]),
     }).then((res) => res.json());
-
     await this.fetchMessages();
   }
 
   async componentDidMount() {
-    console.log("fromDid ", this.state.roomId);
     await this.fetchMessages();
   }
 
   render() {
     return (
       <>
-        <ErrorBoundary>
-          <div className="main-block mx-auto mt-0 mb-5" id="scroller">
-            <Messages
-              messages={this.state.messages}
-              currentUser={this.props}
-              avatarColor={this.props}
-            />
-            <div id="anchor"></div>
+        {!this.state.loading ? (
+          <div className="m-5">
+            <LoadingDots />
           </div>
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <div className="msg-input-box fixed-bottom pb-4 pt-4">
-            <Input
-              onSendMessage={(inputText) =>
-                this.sendMessage(this.props.currentUser, inputText)
-              }
-            />
-          </div>
-        </ErrorBoundary>
+        ) : (
+          <>
+            <ErrorBoundary>
+              <div className="main-block mx-auto mt-0 mb-5" id="scroller">
+                <Messages
+                  messages={this.state.messages}
+                  currentUser={this.props}
+                  avatarColor={this.props}
+                />
+                <div id="anchor"></div>
+              </div>
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <div className="msg-input-box fixed-bottom pb-4 pt-4">
+                <Input
+                  onSendMessage={(inputText) =>
+                    this.sendMessage(this.props.currentUser, inputText)
+                  }
+                />
+              </div>
+            </ErrorBoundary>
+          </>
+        )}
       </>
     );
   }

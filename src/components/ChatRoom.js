@@ -14,10 +14,6 @@ class ChatRoom extends React.Component {
     };
   }
 
-  // componentDidUpdate() {
-  //   console.log(this.state.id);
-  // }
-
   render() {
     return (
       <UserContext.Consumer>

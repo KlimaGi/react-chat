@@ -1,5 +1,6 @@
 import React from "react";
 import ErrorBoundary from "./ErrorBoundary";
+import LoadingDots from "./LoadingDots";
 
 class Rooms extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class Rooms extends React.Component {
       metadata: [],
       id: "",
       roomN: "",
+      loading: false,
     };
     this.fetchRooms = this.fetchRooms.bind(this);
     this.createRoom = this.createRoom.bind(this);
@@ -30,6 +32,7 @@ class Rooms extends React.Component {
     ).then((res) => res.json());
 
     this.setState({
+      loading: true,
       rooms: roomsBin.record,
     });
   }
@@ -104,17 +107,21 @@ class Rooms extends React.Component {
     return (
       <ErrorBoundary>
         <div className="rooms-box px-5 header">
-          <ul className="list-inline">
-            {this.state.rooms.map((room) => this.renderRoom(room))}
-            <li className="list-inline-item m-1">
-              <button
-                onClick={this.handleAddRoom}
-                className="btn btn-room-create px-3"
-              >
-                create
-              </button>
-            </li>
-          </ul>
+          {!this.state.loading ? (
+            <LoadingDots />
+          ) : (
+            <ul className="list-inline">
+              {this.state.rooms.map((room) => this.renderRoom(room))}
+              <li className="list-inline-item m-1">
+                <button
+                  onClick={this.handleAddRoom}
+                  className="btn btn-room-create px-3"
+                >
+                  create
+                </button>
+              </li>
+            </ul>
+          )}
         </div>
       </ErrorBoundary>
     );

@@ -174,3 +174,13 @@ li {
   background: #7f48a3;
   border-radius: 50%;
 }
+
+.loading-dot {
+  color: #c1c5da !important;
+  height: 1.2rem !important;
+  width: 1.2rem !important;
+}
+.loading-dots-boxs {
+  width: 8rem;
+  height: 3.8rem;
+}
