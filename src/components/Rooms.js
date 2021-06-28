@@ -49,6 +49,7 @@ class Rooms extends React.Component {
       body: JSON.stringify([
         {
           user: "cloudy sky chat",
+          color: "#7f48a3",
           timestamp: Date.now(),
           message: "Welcome to new chat",
         },

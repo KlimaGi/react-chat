@@ -70,9 +70,21 @@ li {
   width: 2rem;
   margin-top: 1.8rem;
 }
+.avatar-top {
+  border: 1px solid #9da2bb;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  margin-top: 0.7rem;
+}
 .username {
   font-weight: 600;
   color: #647097;
+}
+.date {
+  font-size: 0.7rem !important;
+  letter-spacing: 1px;
+  font-weight: 300 !important;
 }
 .text {
   padding-top: 1rem;

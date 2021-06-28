@@ -11,21 +11,22 @@ const Header = () => (
     </div>
 
     <UserContext.Consumer>
-      {({ user, logout }) => (
+      {({ user, color, logout }) => (
         <>
-          <div className="col offset-lg-6">
-            <div className="col">
+          <div className="offset-lg-5 col-sm-5 col-lg-2">
+            <div className="col-7">
               <NavLink
                 to="/"
                 activeClassName="is-active"
                 exact={true}
-                className="link-style"
+                className="link-style "
                 onClick={logout}
               >
                 Sign out
               </NavLink>
             </div>
-            <div className="col">
+
+            <div className="col-1">
               <NavLink
                 to="/profile"
                 activeClassName="is-active"
@@ -34,6 +35,12 @@ const Header = () => (
                 {user}
               </NavLink>
             </div>
+          </div>
+          <div className="col-1">
+            <div
+              className="avatar-top"
+              style={{ backgroundColor: color }}
+            ></div>
           </div>
         </>
       )}

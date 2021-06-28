@@ -45,7 +45,7 @@ export default class Chat extends React.Component {
     });
   }
 
-  async sendMessage(user, message) {
+  async sendMessage(user, color, message) {
     await fetch("https://api.jsonbin.io/v3/b/" + this.state.roomId, {
       method: "PUT",
       headers: {
@@ -58,6 +58,7 @@ export default class Chat extends React.Component {
         ...this.state.messages,
         {
           user,
+          color,
           timestamp: Date.now(),
           message,
         },
@@ -83,8 +84,8 @@ export default class Chat extends React.Component {
               <div className="main-block mx-auto mt-0 mb-5" id="scroller">
                 <Messages
                   messages={this.state.messages}
-                  currentUser={this.props}
-                  avatarColor={this.props}
+                  currentUser={this.props.currentUser}
+                  avatarColor={this.props.avatarColor}
                 />
                 <div id="anchor"></div>
               </div>
@@ -93,7 +94,11 @@ export default class Chat extends React.Component {
               <div className="msg-input-box fixed-bottom pb-4 pt-4">
                 <Input
                   onSendMessage={(inputText) =>
-                    this.sendMessage(this.props.currentUser, inputText)
+                    this.sendMessage(
+                      this.props.currentUser,
+                      this.props.avatarColor,
+                      inputText
+                    )
                   }
                 />
               </div>
